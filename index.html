@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pajô — Pilates solo, drenagem, fisioterapia e respiratória</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EDE9DC;
+    --surface: #E2DDCC;
+    --ink: #1B2A22;
+    --ink-soft: #4A5A50;
+    --primary: #23402F;
+    --primary-ink: #F3F1E7;
+    --accent: #A9762F;
+    --line: #C9C2AC;
+    --radius: 2px;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #12201A;
+      --surface: #192920;
+      --ink: #ECE8DA;
+      --ink-soft: #AEB8AC;
+      --primary: #BFE0C9;
+      --primary-ink: #12201A;
+      --accent: #D9A65A;
+      --line: #33463A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #12201A;
+    --surface: #192920;
+    --ink: #ECE8DA;
+    --ink-soft: #AEB8AC;
+    --primary: #BFE0C9;
+    --primary-ink: #12201A;
+    --accent: #D9A65A;
+    --line: #33463A;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:600;
+    line-height:1.1;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  .measure{max-width:38ch;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:18px;
+    padding-bottom:18px;
+  }
+  .brand{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand svg{width:26px;height:26px;flex-shrink:0;}
+  .nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+    margin:0; padding:0;
+    font-size:0.95rem;
+  }
+  .nav-links a{text-decoration:none; color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--primary);
+    color:var(--primary-ink);
+    padding:10px 20px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-size:0.9rem;
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--accent); color:var(--primary-ink);}
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:4px;}
+  .nav-toggle svg{width:26px;height:26px;}
+  .nav-right{display:flex; align-items:center; gap:28px;}
+
+  @media (max-width: 760px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column;
+      background:var(--bg);
+      border-bottom:1px solid var(--line);
+      padding:20px 24px 26px;
+      gap:18px;
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+    .nav-right .nav-cta{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:80px 0 40px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow-mark{
+    display:flex; align-items:center; gap:10px;
+    color:var(--accent);
+    font-size:0.85rem;
+    margin-bottom:22px;
+  }
+  .eyebrow-mark .rule{width:34px; height:1px; background:var(--accent);}
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.6rem);
+  }
+  .hero h1 em{font-style:italic; font-weight:300; color:var(--ink-soft);}
+  .hero p.lede{
+    margin-top:24px;
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero .cta-row{
+    margin-top:34px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-size:0.95rem;
+    font-weight:500;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--primary); color:var(--primary-ink);}
+  .btn-primary:hover{background:var(--accent);}
+  .btn-ghost{border-color:var(--line); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink);}
+  .hero-art{width:100%; height:auto;}
+
+  /* ---------- Wave divider ---------- */
+  .wave-divider{width:100%; height:48px; color:var(--line);}
+  .wave-divider svg{width:100%; height:100%;}
+
+  /* ---------- Services ---------- */
+  .services{padding:20px 0 40px;}
+  .section-head{
+    padding:64px 0 8px;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(1.9rem, 3vw, 2.5rem);}
+  .section-head p{color:var(--ink-soft); max-width:34ch;}
+  .service-row{
+    display:grid;
+    grid-template-columns:1fr auto 1.15fr;
+    gap:40px;
+    align-items:center;
+    padding:44px 0;
+    border-top:1px solid var(--line);
+  }
+  .service-row:nth-child(even){grid-template-columns:1.15fr auto 1fr;}
+  .service-row:nth-child(even) .service-text{order:1;}
+  .service-row:nth-child(even) .service-icon{order:2;}
+  .service-row:nth-child(even) .service-fig{order:3;}
+  .service-text h3{font-size:1.5rem; margin-bottom:12px;}
+  .service-text p{color:var(--ink-soft); max-width:40ch;}
+  .service-icon{
+    width:64px; height:64px;
+    color:var(--primary);
+    flex-shrink:0;
+  }
+  .service-fig{color:var(--line);}
+  @media (max-width: 820px){
+    .service-row, .service-row:nth-child(even){
+      grid-template-columns:56px 1fr;
+      grid-template-areas:"icon text";
+      gap:20px;
+    }
+    .service-row .service-icon{grid-area:icon; width:48px; height:48px; order:0 !important;}
+    .service-row .service-text{grid-area:text; order:0 !important;}
+    .service-fig{display:none;}
+  }
+
+  /* ---------- Approach quote ---------- */
+  .approach{
+    background:var(--surface);
+    padding:80px 0;
+    margin:40px 0;
+  }
+  .approach .wrap{max-width:760px;}
+  .approach p{
+    font-family:var(--serif);
+    font-size:clamp(1.5rem, 2.6vw, 2rem);
+    line-height:1.35;
+    font-weight:300;
+  }
+  .approach .attrib{
+    margin-top:28px;
+    font-family:var(--sans);
+    font-size:0.9rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Process ---------- */
+  .process{padding:40px 0 80px;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:32px;
+    margin-top:36px;
+  }
+  .step{border-top:1px solid var(--line); padding-top:20px;}
+  .step .num{
+    font-family:var(--serif);
+    color:var(--accent);
+    font-size:1rem;
+    display:block;
+    margin-bottom:14px;
+  }
+  .step h3{font-size:1.15rem; margin-bottom:10px;}
+  .step p{color:var(--ink-soft); font-size:0.95rem;}
+  @media (max-width: 760px){
+    .steps{grid-template-columns:1fr; gap:26px;}
+  }
+
+  /* ---------- Testimonial ---------- */
+  .testimonial{padding:20px 0 80px;}
+  .testimonial blockquote{
+    margin:0;
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:300;
+    font-size:clamp(1.2rem, 2vw, 1.5rem);
+    max-width:56ch;
+    color:var(--ink);
+  }
+  .testimonial .attrib{margin-top:18px; color:var(--ink-soft); font-size:0.9rem;}
+
+  /* ---------- Contact / Footer ---------- */
+  footer{
+    background:var(--primary);
+    color:var(--primary-ink);
+    padding:72px 0 40px;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:48px;
+  }
+  footer h2{font-size:clamp(1.9rem, 3vw, 2.4rem); color:var(--primary-ink);}
+  footer .lede{margin-top:18px; opacity:0.82; max-width:40ch;}
+  footer .cta-row{margin-top:30px; display:flex; gap:16px; flex-wrap:wrap;}
+  footer .btn-primary{background:var(--primary-ink); color:var(--primary);}
+  footer .btn-primary:hover{background:var(--accent); color:var(--primary-ink);}
+  footer .btn-ghost{border-color:rgba(243,241,231,0.35); color:var(--primary-ink);}
+  footer .btn-ghost:hover{border-color:var(--primary-ink);}
+  .info-list{list-style:none; margin:0; padding:0; font-size:0.95rem;}
+  .info-list li{padding:14px 0; border-top:1px solid rgba(243,241,231,0.2);}
+  .info-list li:first-child{border-top:none;}
+  .info-list .label{display:block; opacity:0.65; font-size:0.8rem; margin-bottom:4px;}
+  .bottom-bar{
+    margin-top:60px;
+    padding-top:24px;
+    border-top:1px solid rgba(243,241,231,0.2);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:0.82rem; opacity:0.7;
+  }
+  @media (max-width: 760px){
+    .contact-grid{grid-template-columns:1fr; gap:36px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <path d="M6 20c2-6 4-10 6-10s3 8 4 8 1.5-4 3-4 2 3 3 3 2-2 4-2" />
+      </svg>
+      Pajô
+    </a>
+    <div class="nav-right">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#processo">Como funciona</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a class="nav-cta" href="#contato">Agendar avaliação</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow-mark"><span class="rule"></span>Fisioterapia individualizada</div>
+        <h1>Cada respiração.<br>Cada movimento.<br><em>Um só propósito.</em></h1>
+        <p class="lede">Cuidamos do corpo em cada fase da recuperação — do primeiro movimento consciente à respiração plena. Atendimento individualizado em pilates solo, drenagem linfática, fisioterapia e fisioterapia respiratória.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contato">Agendar avaliação</a>
+          <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+        </div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 360 320" fill="none">
+        <path d="M20 260 C60 260 60 180 100 180 S140 100 180 100 S220 40 260 40 S300 20 340 20" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="color:var(--line)"/>
+        <path d="M20 220 C60 220 70 260 110 260 S150 210 190 210 S230 250 270 250 S310 190 340 190" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" style="color:var(--accent)" opacity="0.7"/>
+        <circle cx="340" cy="20" r="4" fill="var(--accent)"/>
+        <circle cx="20" cy="220" r="4" fill="var(--primary)"/>
+      </svg>
+    </div>
+  </section>
+
+  <div class="wave-divider wrap">
+    <svg viewBox="0 0 1120 48" preserveAspectRatio="none"><path d="M0 24 C 140 4, 280 44, 420 24 S 700 4, 840 24 S 1000 44, 1120 24" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+  </div>
+
+  <!-- Services -->
+  <section class="services" id="servicos">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Serviços</h2>
+        <p>Quatro caminhos de cuidado, conduzidos com atenção ao seu momento e ao seu corpo.</p>
+      </div>
+
+      <div class="service-row">
+        <div class="service-text">
+          <h3>Pilates solo</h3>
+          <p>Exercícios no solo, sem aparelhos, focados em postura, força e consciência corporal. Indicado para reabilitação, prevenção de lesões e ganho de mobilidade.</p>
+        </div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="24" cy="10" r="3.4"/>
+          <path d="M24 14v10M24 24l-9 12M24 24l9 12M15 20l9 4 9-4"/>
+        </svg>
+        <svg class="service-fig" viewBox="0 0 120 64" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M4 40 C 30 10, 60 58, 90 24 S 110 6, 116 10"/>
+        </svg>
+      </div>
+
+      <div class="service-row">
+        <div class="service-text">
+          <h3>Drenagem linfática</h3>
+          <p>Massagem terapêutica que estimula a circulação linfática e reduz o inchaço. Recomendada no pós-operatório, na gestação e em casos de retenção de líquido.</p>
+        </div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M24 8c6 8 10 13 10 19a10 10 0 1 1-20 0c0-6 4-11 10-19z"/>
+          <path d="M18 30c1 3 3 5 6 6"/>
+        </svg>
+        <svg class="service-fig" viewBox="0 0 120 64" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M4 32c20 0 20 -20 40 -20s20 20 40 20 20 -20 32 -20"/>
+        </svg>
+      </div>
+
+      <div class="service-row">
+        <div class="service-text">
+          <h3>Fisioterapia</h3>
+          <p>Avaliação e tratamento de dores, lesões e limitações de movimento. Um plano feito para o seu corpo, não um protocolo padrão.</p>
+        </div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M14 30a10 10 0 0 1 20 0" />
+          <circle cx="14" cy="30" r="2.4" fill="currentColor" stroke="none"/>
+          <circle cx="34" cy="30" r="2.4" fill="currentColor" stroke="none"/>
+          <path d="M24 30V14"/>
+        </svg>
+        <svg class="service-fig" viewBox="0 0 120 64" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M4 20a40 40 0 0 0 40 24 40 40 0 0 0 40 -24"/>
+        </svg>
+      </div>
+
+      <div class="service-row">
+        <div class="service-text">
+          <h3>Fisioterapia respiratória</h3>
+          <p>Técnicas para melhorar a capacidade pulmonar e facilitar a respiração. Indicada em quadros pós-covid, doenças respiratórias crônicas e recuperação cirúrgica.</p>
+        </div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M24 8v14"/>
+          <path d="M24 22c-3-6-13-4-13 4 0 8 6 12 13 8"/>
+          <path d="M24 22c3-6 13-4 13 4 0 8-6 12-13 8"/>
+        </svg>
+        <svg class="service-fig" viewBox="0 0 120 64" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M4 44c14-30 30-30 44 0s30 30 44 0"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Approach quote -->
+  <section class="approach">
+    <div class="wrap">
+      <p>Não tratamos só o sintoma. Entendemos como você respira, como se move e como vive — e construímos o cuidado a partir disso.</p>
+      <div class="attrib">Nossa abordagem</div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process" id="processo">
+    <div class="wrap">
+      <div class="section-head" style="padding-top:0;">
+        <h2>Como funciona</h2>
+        <p>Três etapas simples, do primeiro contato ao acompanhamento contínuo.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <h3>Avaliação inicial</h3>
+          <p>Conversamos sobre sua história, examinamos postura e movimento, e entendemos sua rotina.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>Plano personalizado</h3>
+          <p>Definimos objetivos claros e montamos um plano de sessões sob medida para o seu caso.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>Acompanhamento contínuo</h3>
+          <p>Ajustamos o plano a cada retorno, acompanhando sua evolução de perto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="testimonial">
+    <div class="wrap">
+      <blockquote>"Depois da cirurgia, achei que ia demorar meses para respirar sem esforço. Em poucas semanas de fisioterapia respiratória, voltei a dormir a noite toda."</blockquote>
+      <div class="attrib">Marina T., paciente</div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contato">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Vamos começar seu cuidado</h2>
+        <p class="lede">Agende uma avaliação e conte para a gente o que você está sentindo. O plano de cuidado começa a partir daí.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://wa.me/5500000000000" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+          <a class="btn btn-ghost" href="mailto:contato@amplitudefisio.com.br">Enviar e-mail</a>
+        </div>
+      </div>
+      <ul class="info-list">
+        <li><span class="label">Endereço</span>Rua Exemplo, 123 — Bairro, Cidade / UF</li>
+        <li><span class="label">Telefone / WhatsApp</span>(00) 00000-0000</li>
+        <li><span class="label">Horário</span>Segunda a sexta, 7h às 19h</li>
+        <li><span class="label">Instagram</span>@amplitudefisioterapia</li>
+      </ul>
+    </div>
+    <div class="bottom-bar">
+      <span>© 2026 Pajô</span>
+      <span>Conteúdo de exemplo — substitua pelos dados reais da clínica</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
