@@ -318,6 +318,15 @@
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
     font-size:0.82rem; opacity:0.7;
   }
+  .instagram-link {
+  color: #030303;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.instagram-link:hover {
+  opacity: 0.8;
+}
   @media (max-width: 760px){
     .contact-grid{grid-template-columns:1fr; gap:36px;}
   }
@@ -504,7 +513,17 @@
         <!-- <li><span class="label">Endereço</span>Rua Exemplo, 123 — Bairro, Cidade / UF</li> -->
         <li><span class="label">Telefone / WhatsApp</span>(62) 99471-6070</li>
         <li><span class="label">Horário</span>Segunda a sexta, 7h às 19h</li>
-        <li><span class="label">Instagram</span>@pajofisioepilates</li>
+        <li>
+          <span class="label">Instagram</span>
+          <a
+            href="https://www.instagram.com/pajofisioepilates/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="instagram-link"
+          >
+            @pajofisioepilates
+          </a>
+        </li>
       </ul>
     </div>
     <div class="bottom-bar">
